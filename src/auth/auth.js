@@ -16,5 +16,3 @@ export function isAuthenticated()  {
     }
     return true;
 }
-
-// TODO Create time tokens to expire login session

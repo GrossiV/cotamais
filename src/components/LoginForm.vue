@@ -3,8 +3,6 @@ import CustomInput from './CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-// TODO Create feedback messages on login error and user not registred
-
 const loginInput = ref('')
 const hasLoginError = ref(false)
 const passwordInput = ref('')
@@ -24,7 +22,6 @@ function updatePassword(input) {
 function validateInputs() {
     const login = validateLoginInput();
     const password = validatePasswordInput();
-    //TODO check if info is on localStorage
     return !!login && !!password;
 }
 

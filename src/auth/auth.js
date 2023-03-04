@@ -1,4 +1,4 @@
-const EXPIRATION_IN_MINUTES = 5;
+const SECONDS_TO_EXPIRE_TOKEN = 60 * 60;
 
 export function isAuthenticated()  {
     const user = JSON.parse(
@@ -8,11 +8,12 @@ export function isAuthenticated()  {
     )
 
     const navigationStart = new Date(user?.token);
-    const timeElapsed = Math.round((Date.now() - navigationStart) / 1000)
-    if(timeElapsed > (EXPIRATION_IN_MINUTES * 60)) {
+    const timeElapsedInSeconds = Math.round((Date.now() - navigationStart) / 1000)
+    if(timeElapsedInSeconds > (SECONDS_TO_EXPIRE_TOKEN)) {
         // TODO warn user that his login has expired
         localStorage.removeItem('loggedUser');
         return false
     }
     return true;
 }
+// TODO test if works with a clean local storage

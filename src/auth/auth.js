@@ -11,7 +11,7 @@ export function isAuthenticated()  {
     const timeElapsed = Math.round((Date.now() - navigationStart) / 1000)
     if(timeElapsed > (EXPIRATION_IN_MINUTES * 60)) {
         // TODO warn user that his login has expired
-        console.log('TOKEN EXPIRADO')
+        localStorage.removeItem('loggedUser');
         return false
     }
     return true;

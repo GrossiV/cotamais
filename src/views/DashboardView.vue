@@ -6,6 +6,8 @@ import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { isAuthenticated } from '@/auth/auth';
 import { getStocksAndCurrencies } from '@/services/dashboard-service'
+import PanelCurrencies from '../components/Panels/PanelCurrencies.vue'
+import PanelStocks from '../components/Panels/PanelStocks.vue'
 
 const router = useRouter();
 
@@ -37,22 +39,14 @@ onMounted(() => {
 <template>
   <div class="dashboard">
     <h1>DASHBOARD</h1>
-    <ul>
-      <li v-for="( value, key ) in dashboardData.stocks">
-        {{ key }}
-        <p>{{value.variation}}</p>
-        <p>{{value.points}}</p>
-        <p>{{value.name}}</p>
-      </li>
-    </ul>
-    <ul>
-      <li v-for="( value, key ) in dashboardData.currencies">
-        {{ key }}
-        <p>{{value.variation}}</p>
-        <p>{{value.buy}}</p>
-        <p>{{value.name}}</p>
-      </li>
-    </ul>
+      <PanelStocks :assets="dashboardData.stocks"/>
+      <PanelCurrencies :assets="dashboardData.currencies"/>
   </div>
 </template>
 
+<style scoped>
+.asset-tile {
+  text-align: center;
+  margin: 10px;
+}
+</style>

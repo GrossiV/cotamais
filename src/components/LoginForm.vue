@@ -70,7 +70,7 @@ function handleLoginClick() {
         return 
     }
     
-    router.push({name: 'signup'})
+    router.push({name: 'dashboard'})
 }
 
 function handleSignupClick() {

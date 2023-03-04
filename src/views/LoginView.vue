@@ -8,7 +8,7 @@ import LoginForm from '../components/LoginForm.vue'
   </div>
 </template>
 
-<style>
+<style scoped>
 .about {
   min-height: 50vh;
   display: flex;

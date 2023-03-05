@@ -26,9 +26,9 @@ defineProps({
     font-weight: bold;
 }
 .chip--success {
-    background-color: #0ACF97;
+    background-color: var(--success);
 }
 .chip--danger {
-    background-color: #FA5C7C;
+    background-color:  var(--danger);
 }
 </style>

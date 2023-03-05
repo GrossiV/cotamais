@@ -1,0 +1,11 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    fill="currentColor"
+    viewBox="0 96 960 960"
+  >
+    <path d="M480 896 160 576l42-42 248 248V256h60v526l248-248 42 42-320 320Z" />
+  </svg>
+</template>

@@ -26,13 +26,19 @@ function updateInput(e) {
 function onFocus() {
   emit('onInputFocus')
 }
-
 </script>
 
 <template>
-    <input class="input" :class="{'input--error': hasError}" @focus="onFocus" @input="updateInput" v-model="input" :placeholder="placeholder" :type="type">
+  <input
+    class="input"
+    :class="{ 'input--error': hasError }"
+    @focus="onFocus"
+    @input="updateInput"
+    v-model="input"
+    :placeholder="placeholder"
+    :type="type"
+  />
 </template>
-
 
 <style scoped>
 .input {

@@ -1,35 +1,33 @@
 <script setup>
 import LogoutIcon from './icons/IconLogout.vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
+const router = useRouter()
 
 function handleHomeClick() {
-    router.push({name: 'dashboard'})
+  router.push({ name: 'dashboard' })
 }
 function handleLogoutClick() {
-    localStorage.removeItem('loggedUser');
-    router.push({name: 'login'})
+  localStorage.removeItem('loggedUser')
+  router.push({ name: 'login' })
 }
 </script>
 
 <template>
-    <nav class="topbar">
-      <ul>
-        <li @click="handleHomeClick" class="nav-item logo">
-          Cota +
-        </li>
-        <li @click="handleLogoutClick" class="nav-item" >
-          <LogoutIcon/>
-        </li>
-      </ul>
-    </nav>
+  <nav class="topbar">
+    <ul>
+      <li @click="handleHomeClick" class="nav-item logo">Cota +</li>
+      <li @click="handleLogoutClick" class="nav-item">
+        <LogoutIcon />
+      </li>
+    </ul>
+  </nav>
 </template>
-  
+
 <style scoped>
 .topbar {
   padding: 8px 16px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 24px;
 }
 .nav-item {
@@ -49,7 +47,6 @@ ul {
   display: flex;
   justify-content: space-between;
   padding: 0;
-
 }
 ul li {
   list-style-type: none;

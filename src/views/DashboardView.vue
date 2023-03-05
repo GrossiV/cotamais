@@ -1,30 +1,31 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { isAuthenticated } from '@/auth/auth';
+import { isAuthenticated } from '@/auth/auth'
 import { getStocksAndCurrencies } from '@/services/dashboard-service'
 import TopBar from '../components/TopBar.vue'
-import Alert from '../components/Alert.vue';
-import Loader from '../components/Loader.vue';
-import CurrenciesTable from '../components/Tables/CurrenciesTable.vue';
-import StocksTable from '../components/Tables/StocksTable.vue';
+import Alert from '../components/Alert.vue'
+import Loader from '../components/Loader.vue'
+import CurrenciesTable from '../components/Tables/CurrenciesTable.vue'
+import StocksTable from '../components/Tables/StocksTable.vue'
 
-const router = useRouter();
+const router = useRouter()
 
 const alertText = ref('')
 const alertType = ref('')
 const isLoading = ref(true)
 
-const dashboardData =  reactive({ 
+const dashboardData = reactive({
   stocks: {},
-  currencies: {} })
+  currencies: {}
+})
 
 async function getDasboardData() {
   try {
-    const {stocks, currencies} =  await getStocksAndCurrencies()
+    const { stocks, currencies } = await getStocksAndCurrencies()
     dashboardData.stocks = stocks
     dashboardData.currencies = currencies
-  } catch(err) {
+  } catch (err) {
     alertText.value = 'Erro ao buscar dados, tente novamente mais tarde.'
     alertType.value = 'danger'
     console.error(err)
@@ -35,25 +36,25 @@ async function getDasboardData() {
 
 onMounted(() => {
   if (!isAuthenticated()) {
-    router.push({name: 'login'})
+    router.push({ name: 'login' })
   }
-  getDasboardData();
+  getDasboardData()
 })
 </script>
 
 <template>
-  <TopBar/>
+  <TopBar />
   <Loader v-if="isLoading" />
   <div v-else class="container">
     <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="dashboard">
-      <CurrenciesTable :assets="dashboardData.currencies"/>
-      <StocksTable :assets="dashboardData.stocks"/>
+      <CurrenciesTable :assets="dashboardData.currencies" />
+      <StocksTable :assets="dashboardData.stocks" />
     </div>
   </div>
 </template>
- <style scoped>
- .container {
+<style scoped>
+.container {
   padding: 0 24px;
- }
+}
 </style>

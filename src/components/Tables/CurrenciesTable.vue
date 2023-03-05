@@ -1,12 +1,12 @@
 <script setup>
 import Chip from '../Chip.vue'
-import AssetCell from './Cells/AssetCell.vue';
+import AssetCell from './Cells/AssetCell.vue'
 
 defineProps({
   assets: {
     type: Object,
     default: () => {}
-  },
+  }
 })
 
 function formatCurrency(value) {
@@ -16,34 +16,33 @@ function formatCurrency(value) {
 function chipType(variation) {
   if (variation > 0) {
     return 'success'
-  } 
+  }
   return 'danger'
 }
-
 </script>
 
 <template>
   <h2 class="title">Acompanhe as principais moedas</h2>
   <div class="panel-container">
-    <template :key="key" v-for="( currency, key ) in assets">
+    <template :key="key" v-for="(currency, key) in assets">
       <div class="asset-tile" v-if="currency.buy">
         <AssetCell>
-            <template #heading>
-              <div class="asset-tile__heading">
-                <p class="asset-tile__heading-title">{{ key }}</p>
-                <div class="asset-tile__heading-chip">
-                  <Chip :type="chipType(currency.variation)" :text="currency.variation + ' %'"/>
-                </div>
+          <template #heading>
+            <div class="asset-tile__heading">
+              <p class="asset-tile__heading-title">{{ key }}</p>
+              <div class="asset-tile__heading-chip">
+                <Chip :type="chipType(currency.variation)" :text="currency.variation + ' %'" />
               </div>
-            </template>
-            <template #body>
-            <p class="asset-tile__main-info">{{ formatCurrency(currency.buy)  }}</p>
-            </template>
-            <template #footer>
-            <p>{{currency.name}}</p>
+            </div>
+          </template>
+          <template #body>
+            <p class="asset-tile__main-info">{{ formatCurrency(currency.buy) }}</p>
+          </template>
+          <template #footer>
+            <p>{{ currency.name }}</p>
           </template>
         </AssetCell>
-        <hr class="panel-container__divider"/>
+        <hr class="panel-container__divider" />
       </div>
     </template>
   </div>
@@ -76,8 +75,8 @@ function chipType(variation) {
 }
 
 .asset-tile__main-info {
- font-size: 1.7rem;
- font-weight: 500;
+  font-size: 1.7rem;
+  font-weight: 500;
 }
 .panel-container__divider {
   width: 150px;
@@ -98,5 +97,4 @@ function chipType(variation) {
     place-items: center;
   }
 }
-
 </style>

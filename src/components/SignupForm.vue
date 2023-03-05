@@ -87,50 +87,51 @@ function handleSignupClick() {
 <template>
     <div class="container">
         <div class="signup-box">
-        <h1 class="title">Cota +</h1>
-    <form 
-        class="form"
-        @submit.prevent="handleSignupClick"
-    >
-        <CustomInput 
-            @onInputChange="updateLogin" 
-            @onInputFocus="hasLoginError=false" 
-            :hasError="hasLoginError" 
-            class="form__input"  
-            placeholder="usuário"
-        />
-        <CustomInput 
-            @onInputChange="updatePassword" 
-            @onInputFocus="hasPasswordError=false" 
-            :hasError="hasPasswordError" 
-            class="form__input" 
-            type="password" 
-            placeholder="senha"
-        />
-        <CustomInput 
-            @onInputChange="updateConfirmPassword" 
-            @onInputFocus="hasConfirmPasswordError=false" 
-            :hasError="hasConfirmPasswordError" 
-            class="form__input" type="password" 
-            placeholder="confirme a senha"
-        />
-        <div class="form__footer">
-            <button ref="submitButton" class="form__button form__button--primary">Registrar</button>
+            <h1 class="title">Cota +</h1>
+            <form 
+                class="form"
+                @submit.prevent="handleSignupClick"
+            >
+                <CustomInput 
+                    @onInputChange="updateLogin" 
+                    @onInputFocus="hasLoginError=false" 
+                    :hasError="hasLoginError" 
+                    class="form__input"  
+                    placeholder="usuário"
+                />
+                <CustomInput 
+                    @onInputChange="updatePassword" 
+                    @onInputFocus="hasPasswordError=false" 
+                    :hasError="hasPasswordError" 
+                    class="form__input" 
+                    type="password" 
+                    placeholder="senha"
+                />
+                <CustomInput 
+                    @onInputChange="updateConfirmPassword" 
+                    @onInputFocus="hasConfirmPasswordError=false" 
+                    :hasError="hasConfirmPasswordError" 
+                    class="form__input" type="password" 
+                    placeholder="confirme a senha"
+                />
+                <div class="form__footer">
+                    <button ref="submitButton" class="form__button form__button--primary">Registrar</button>
+                </div>
+            </form>
+            <div class="container__footer">
+                <button 
+                    @click="handleAlreadySignedupClick"
+                    class="form__button form__button--secondary"
+                >
+                    Já sou cadastrado
+                </button>
+            </div>
         </div>
-    </form>
-    
-    <button 
-            @click="handleAlreadySignedupClick"
-            class="form__button form__button--secondary"
-        >
-            Já sou cadastrado
-        </button>
-    </div>
     </div>
 </template>
 
 <style scoped>
-.container{
+.container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -172,10 +173,13 @@ function handleSignupClick() {
 .form__button--primary {
     background-color: var(--primary);
 }
-.form__button--secondary {
+
+.container__footer {
     text-align: center;
-    padding-top: 0;
     width: 100%;
+}
+.form__button--secondary {
+    padding: 0;
     color: var(--primary);
     background-color: rgba(0,0,0,0);
 }

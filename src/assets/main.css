@@ -1,21 +1,30 @@
-@import './base.css';
+:root {
+  --base: #f2f2f2;
+  --black: #222222;
+  --primary: #007add;
+  --success: #0ACF97;
+  --danger: #FA5C7C;
+}
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
   font-weight: normal;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+body {
+  min-height: 100vh;
+  color: var(--black);
+  background: var(--base);
+  line-height: 1.6;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0 2rem;
-  }
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

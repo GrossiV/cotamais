@@ -35,7 +35,7 @@ function chipType(variation) {
         <AssetCell>
           <template #heading>
             <div class="asset-tile__heading">
-              <p class="asset-tile__heading-title">{{ key }}</p>
+              <p>{{ key }}</p>
               <div class="asset-tile__heading-chip">
                 <Chip :type="chipType(currency.variation)" :text="currency.variation + ' %'" />
               </div>
@@ -74,9 +74,6 @@ function chipType(variation) {
   justify-content: center;
   align-items: center;
   gap: 8px;
-}
-.asset-tile__heading-title {
-  font-weight: bold;
 }
 .asset-tile__heading-chip {
   margin-bottom: 5.5px;

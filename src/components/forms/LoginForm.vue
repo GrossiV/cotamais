@@ -1,8 +1,8 @@
 <script setup>
-import CustomInput from './CustomInput.vue'
+import CustomInput from '../CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import Alert from './Alert.vue';
+import Alert from '../Alert.vue';
 
 const loginInput = ref('')
 const hasLoginError = ref(false)

@@ -28,7 +28,7 @@ function chipType(variation) {
 </script>
 
 <template>
-  <h2 class="title">Acompanhe as principais moedas</h2>
+  <h2 class="title">Cotação das principais moedas para o real</h2>
   <div class="panel-container">
     <template :key="key" v-for="(currency, key) in assets">
       <div class="asset-tile" v-if="currency.buy">

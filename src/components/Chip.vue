@@ -29,4 +29,8 @@ defineProps({
 .chip--danger {
   background-color: var(--danger);
 }
+.chip--default {
+  background-color: #ddd;
+  color: var(--black);
+}
 </style>

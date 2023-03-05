@@ -23,7 +23,7 @@ function chipType(variation) {
   if (variation > 0) {
     return 'success'
   }
-  return 'danger'
+  return variation < 0 ? 'danger' : 'default'
 }
 </script>
 

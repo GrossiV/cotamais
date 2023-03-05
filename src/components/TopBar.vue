@@ -1,5 +1,5 @@
 <script setup>
-import LogoutIcon from './icons/IconLogout.vue'
+import IconLogout from './icons/IconLogout.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -18,7 +18,7 @@ function handleLogoutClick() {
     <ul>
       <li @click="handleHomeClick" class="nav-item logo">Cota +</li>
       <li @click="handleLogoutClick" class="nav-item">
-        <LogoutIcon />
+        <IconLogout />
       </li>
     </ul>
   </nav>

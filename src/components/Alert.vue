@@ -6,28 +6,28 @@ defineProps({
   },
   text: {
     type: String,
-    default: '-0,025 %'
+    default: ''
   },
 })
 </script>
 
 <template>
-    <span class="chip" :class="`chip--${type}`">{{ text }}</span>
+    <div v-if="text" class="alert" :class="`alert--${type}`">{{ text }}</div>
 </template>
 
 
 <style scoped>
-.chip {
-    border-radius: 10px;
-    font-size: .65rem;
-    padding: 2px 6px;
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: .8rem;
     color: #fff;
     font-weight: bold;
 }
-.chip--success {
+.alert--success {
     background-color: var(--success);
 }
-.chip--danger {
+.alert--danger {
     background-color:  var(--danger);
 }
 </style>

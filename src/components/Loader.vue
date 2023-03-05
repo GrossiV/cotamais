@@ -21,10 +21,12 @@ defineProps({
   height: 60px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  margin: auto;
   position: absolute;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 /* Safari */

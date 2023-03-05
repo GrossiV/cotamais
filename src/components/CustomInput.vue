@@ -36,15 +36,22 @@ function onFocus() {
 
 <style scoped>
 .input {
-  padding: 6px;
-  border: 1px solid rgb(8, 85, 66);
-  border-radius: 14px;
-  text-indent: 14px;
-}
-.input--error {
-  border: 1px solid red;
+  padding: 12px;
+  border: 1px solid var(--black);
+  border-radius: 4px;
 }
 .input:focus {
   outline: none;
+  border: 1px solid var(--primary);
+}
+.input:focus::placeholder {
+  color: var(--primary);
+}
+
+.input--error {
+  border: 1px solid var(--danger);
+}
+.input--error::placeholder {
+  color: var(--danger);
 }
 </style>

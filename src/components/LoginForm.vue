@@ -8,6 +8,7 @@ const hasLoginError = ref(false)
 const passwordInput = ref('')
 const hasPasswordError = ref(false)
 const router = useRouter()
+const submitButton = ref(null)
 
 function updateLogin(input) {
     loginInput.value = input
@@ -62,6 +63,7 @@ function validateUser() {
 }
 
 function handleLoginClick() {
+    submitButton.value.focus();
     if(!validateInputs()) {
         return 
     }
@@ -80,63 +82,97 @@ function handleSignupClick() {
 </script>
 
 <template>
-    <h1>Cota +</h1>
-    <div class="form">
-        <CustomInput 
-            @onInputChange="updateLogin" 
-            @onInputFocus="hasLoginError=false" 
-            :hasError="hasLoginError" 
-            class="form__input"  
-            placeholder="usuário"
-        />
-        <CustomInput 
-            @onInputChange="updatePassword" 
-            @onInputFocus="hasPasswordError=false" 
-            :hasError="hasPasswordError" 
-            class="form__input" type="password" 
-            placeholder="senha"
-        />
-        <div class="form__footer">
-            <button class="form__button form__button--green" @click="handleLoginClick">Entrar</button>
-            <button class="form__button form__button--outlined" @click="handleSignupClick">Registrar</button>
-        </div>
+    <div class="container">
+        <div class="login-box">
+        <h1 class="title">Cota +</h1>
+        <form
+            @submit.prevent="handleLoginClick"
+            class="form"
+        >
+            <CustomInput 
+                @onInputChange="updateLogin" 
+                @onInputFocus="hasLoginError=false" 
+                :hasError="hasLoginError" 
+                class="form__input"  
+                placeholder="usuário"
+            />
+            <CustomInput 
+                @onInputChange="updatePassword" 
+                @onInputFocus="hasPasswordError=false" 
+                :hasError="hasPasswordError" 
+                class="form__input" type="password" 
+                placeholder="senha"
+            />
+            <div class="form__footer">
+                <button ref="submitButton" class="form__button form__button--primary">Acessar</button>
+            </div>
+        </form>
+        <button 
+            @click="handleSignupClick"
+            class="form__button form__button--secondary"
+        >
+            Ainda não é cadastrado?
+        </button>
+    </div>
     </div>
 </template>
 
 <style scoped>
-    .form {
-       display: flex;
-       flex-direction: column;
-       gap: 12px;
-       background-color: rgb(26, 49, 41);
-       padding: 24px;
-       border-radius: 12px;
-    }
-    .form__footer {
-        display: flex;
-        width: 100%;
-        justify-items: center;
-    }
-    .form__button {
-        margin: 0 auto;
-        padding: 3px 15px;
-        border: none;
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.title {
+    color: var(--primary);
+    text-shadow: 1px 1px 20px var(--primary);
+    font-weight: bold;
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 15px;
+}
+.form__footer {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+}
+.form__button {
+    margin: 0 auto;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    font-weight: bold;
+}
+.form__button:focus {
+    outline: none;
+}
+.form__button--primary {
+    background-color: var(--primary);
+}
+.form__button--secondary {
+    text-align: center;
+    padding-top: 0;
+    width: 100%;
+    color: var(--primary);
+    background-color: rgba(0,0,0,0);
+}
+
+@media (min-width: 768px) {
+    .login-box{
+        background-color: white;
+        padding: 12px 0;
         border-radius: 12px;
-        color: white;
-        font-weight: bold;
     }
-    .form__button:hover {
-        opacity: 0.8;
-    }
-    .form__button--green {
-        background-color: rgb(8, 85, 66);
-    }
-    .form__button--outlined {
-        background-color: rgba(0, 0, 0, 0);
-        border: 1px solid rgb(8, 85, 66);
-    }
-    .form__button:hover {
-        cursor: pointer;
-        
-    }
+}
 </style>

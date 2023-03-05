@@ -6,7 +6,7 @@ defineProps({
   },
   text: {
     type: String,
-    default: '-0,025 %'
+    default: ''
   }
 })
 </script>

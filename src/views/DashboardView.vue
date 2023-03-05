@@ -8,12 +8,15 @@ import Alert from '../components/Alert.vue'
 import Loader from '../components/Loader.vue'
 import CurrenciesTable from '../components/Tables/CurrenciesTable.vue'
 import StocksTable from '../components/Tables/StocksTable.vue'
+import Chart from '../components/Chart/Chart.vue'
 
 const router = useRouter()
 
 const alertText = ref('')
 const alertType = ref('')
 const isLoading = ref(true)
+const chart = ref(null)
+const chartTitle = ref('')
 
 const dashboardData = reactive({
   stocks: {},
@@ -34,6 +37,11 @@ async function getDasboardData() {
   }
 }
 
+function scrollToChart(currency) {
+  chartTitle.value = currency.name
+  chart.value.scrollIntoView({ behavior: 'smooth' })
+}
+
 onMounted(() => {
   if (!isAuthenticated()) {
     router.push({ name: 'login' })
@@ -48,7 +56,9 @@ onMounted(() => {
   <div v-else class="container">
     <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="dashboard">
-      <CurrenciesTable :assets="dashboardData.currencies" />
+      <CurrenciesTable @focus-on-chart="scrollToChart" :assets="dashboardData.currencies" />
+      <h4 ref="chart">{{ chartTitle }}</h4>
+      <Chart />
       <StocksTable :assets="dashboardData.stocks" />
     </div>
   </div>

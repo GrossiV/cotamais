@@ -9,6 +9,12 @@ defineProps({
   }
 })
 
+const emit = defineEmits(['focusOnChart'])
+
+function handleQuotationClick(currency) {
+  emit('focusOnChart', currency)
+}
+
 function formatCurrency(value) {
   return new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(value)
 }
@@ -36,7 +42,9 @@ function chipType(variation) {
             </div>
           </template>
           <template #body>
-            <p class="asset-tile__main-info">{{ formatCurrency(currency.buy) }}</p>
+            <p @click="handleQuotationClick(currency)" class="asset-tile__main-info">
+              {{ formatCurrency(currency.buy) }}
+            </p>
           </template>
           <template #footer>
             <p>{{ currency.name }}</p>
@@ -77,6 +85,9 @@ function chipType(variation) {
 .asset-tile__main-info {
   font-size: 1.7rem;
   font-weight: 500;
+}
+.asset-tile__main-info:hover {
+  cursor: pointer;
 }
 .panel-container__divider {
   width: 150px;

@@ -3,11 +3,11 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { isAuthenticated } from '@/auth/auth';
 import { getStocksAndCurrencies } from '@/services/dashboard-service'
-import PanelCurrencies from '../components/Panels/PanelCurrencies.vue'
-import PanelStocks from '../components/Panels/PanelStocks.vue'
 import TopBar from '../components/TopBar.vue'
 import Alert from '../components/Alert.vue';
 import Loader from '../components/Loader.vue';
+import CurrenciesTable from '../components/Tables/CurrenciesTable.vue';
+import StocksTable from '../components/Tables/StocksTable.vue';
 
 const router = useRouter();
 
@@ -47,8 +47,8 @@ onMounted(() => {
   <div v-else class="container">
     <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="dashboard">
-      <PanelCurrencies :assets="dashboardData.currencies"/>
-      <PanelStocks :assets="dashboardData.stocks"/>
+      <CurrenciesTable :assets="dashboardData.currencies"/>
+      <StocksTable :assets="dashboardData.stocks"/>
     </div>
   </div>
 </template>

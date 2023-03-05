@@ -1,5 +1,5 @@
 <script setup>
-import AssetTile from '../AssetTile.vue';
+import AssetCell from './Cells/AssetCell.vue';
 
 defineProps({
   assets: {
@@ -12,7 +12,7 @@ defineProps({
 <template>
     <div :key="key" class="asset-tile" v-for="( stock, key ) in assets">
         a
-      <AssetTile>
+      <AssetCell>
           <template #heading>
             <p>{{ key }}</p>
           </template>
@@ -22,7 +22,7 @@ defineProps({
           <template #footer>
         <p>{{stock.location}}</p>
           </template>
-        </AssetTile>
+        </AssetCell>
     </div>
 </template>
 

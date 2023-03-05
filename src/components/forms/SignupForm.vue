@@ -1,5 +1,5 @@
 <script setup>
-import CustomInput from '../CustomInput.vue'
+import CustomInput from './inputs/CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 

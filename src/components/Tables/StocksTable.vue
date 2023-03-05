@@ -48,6 +48,7 @@ defineProps({
   place-items: center;
   max-width: 980px;
   margin: 60px auto;
+  gap: 20px;
 }
 .asset-tile {
   text-align: center;

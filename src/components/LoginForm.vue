@@ -2,6 +2,7 @@
 import CustomInput from './CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Alert from './Alert.vue';
 
 const loginInput = ref('')
 const hasLoginError = ref(false)
@@ -10,6 +11,9 @@ const hasPasswordError = ref(false)
 const router = useRouter()
 const submitButton = ref(null)
 
+const alertText = ref('')
+const alertType = ref('')
+
 function updateLogin(input) {
     loginInput.value = input
 }
@@ -17,8 +21,6 @@ function updateLogin(input) {
 function updatePassword(input) {
     passwordInput.value = input
 }
-
-// TODO create utils to validate inputs passing value and regex;
 
 function validateInputs() {
     const login = validateLoginInput();
@@ -51,7 +53,8 @@ function validateUser() {
         user?.username !== loginInput.value 
         || user?.password !== passwordInput.value
     ) {
-        //TODO alert to inform that user does not exist;
+        alertText.value = 'Usuário não cadastrado.'
+        alertType.value = 'danger'
         return false
     }
 
@@ -63,6 +66,9 @@ function validateUser() {
 }
 
 function handleLoginClick() {
+    
+    alertText.value = ''
+    alertType.value = ''
     submitButton.value.focus();
     if(!validateInputs()) {
         return 
@@ -83,6 +89,7 @@ function handleSignupClick() {
 
 <template>
     <div class="container">
+        <Alert class="alert" :type="alertType" :text="alertText"/>
         <div class="login-box">
         <h1 class="title">Cota +</h1>
         <form
@@ -107,12 +114,14 @@ function handleSignupClick() {
                 <button ref="submitButton" class="form__button form__button--primary">Acessar</button>
             </div>
         </form>
-        <button 
-            @click="handleSignupClick"
-            class="form__button form__button--secondary"
-        >
-            Ainda não é cadastrado?
-        </button>
+        <div class="container__footer">
+            <button 
+                @click="handleSignupClick"
+                class="form__button form__button--secondary"
+            >
+                Ainda não é cadastrado?
+            </button>
+        </div>
     </div>
     </div>
 </template>
@@ -126,6 +135,12 @@ function handleSignupClick() {
     justify-content: center;
     max-width: 400px;
     margin: 0 auto;
+}
+
+.alert {
+    position: absolute;
+    top: 24px;
+    width: 100%;
 }
 
 .title {
@@ -160,10 +175,14 @@ function handleSignupClick() {
 .form__button--primary {
     background-color: var(--primary);
 }
-.form__button--secondary {
-    text-align: center;
-    padding-top: 0;
+
+.container__footer{
     width: 100%;
+    text-align: center;
+}
+
+.form__button--secondary {
+    padding: 0;
     color: var(--primary);
     background-color: rgba(0,0,0,0);
 }

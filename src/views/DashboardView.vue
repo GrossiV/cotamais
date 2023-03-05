@@ -1,15 +1,17 @@
 <script setup>
-//TODO create logout function / button
-//TODO create topbar
-//TODO theme based on the blog
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { isAuthenticated } from '@/auth/auth';
 import { getStocksAndCurrencies } from '@/services/dashboard-service'
 import PanelCurrencies from '../components/Panels/PanelCurrencies.vue'
 import PanelStocks from '../components/Panels/PanelStocks.vue'
+import TopBar from '../components/TopBar.vue'
+import Alert from '../components/Alert.vue';
 
 const router = useRouter();
+
+const alertText = ref('')
+const alertType = ref('')
 
 const dashboardData =  reactive({ 
   stocks: {},
@@ -22,13 +24,13 @@ async function getDasboardData() {
     dashboardData.stocks = stocks
     dashboardData.currencies = currencies
   } catch(err) {
-    // TODO warn user
-    console.error(err);
+    alertText.value = 'Erro ao buscar dados, tente novamente mais tarde.'
+    alertType.value = 'danger'
+    console.error(err)
   }
 }
 
 onMounted(() => {
-  console.log(`the component is now mounted.`)
   if (!isAuthenticated()) {
     router.push({name: 'login'})
   }
@@ -37,16 +39,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="dashboard">
-    <h1>DASHBOARD</h1>
-      <PanelStocks :assets="dashboardData.stocks"/>
+  <TopBar/>
+  <div class="container">
+    <Alert class="alert" :type="alertType" :text="alertText" />
+    <div class="dashboard">
       <PanelCurrencies :assets="dashboardData.currencies"/>
+      <PanelStocks :assets="dashboardData.stocks"/>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.asset-tile {
-  text-align: center;
-  margin: 10px;
-}
+ <style scoped>
+ .container {
+  padding: 0 24px;
+ }
 </style>

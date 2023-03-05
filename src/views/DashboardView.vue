@@ -7,17 +7,18 @@ import PanelCurrencies from '../components/Panels/PanelCurrencies.vue'
 import PanelStocks from '../components/Panels/PanelStocks.vue'
 import TopBar from '../components/TopBar.vue'
 import Alert from '../components/Alert.vue';
+import Loader from '../components/Loader.vue';
 
 const router = useRouter();
 
 const alertText = ref('')
 const alertType = ref('')
+const isLoading = ref(true)
 
 const dashboardData =  reactive({ 
   stocks: {},
   currencies: {} })
 
-// TODO create loading effect / skeleton for mounted.
 async function getDasboardData() {
   try {
     const {stocks, currencies} =  await getStocksAndCurrencies()
@@ -27,6 +28,8 @@ async function getDasboardData() {
     alertText.value = 'Erro ao buscar dados, tente novamente mais tarde.'
     alertType.value = 'danger'
     console.error(err)
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -40,7 +43,8 @@ onMounted(() => {
 
 <template>
   <TopBar/>
-  <div class="container">
+  <Loader v-if="isLoading" />
+  <div v-else class="container">
     <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="dashboard">
       <PanelCurrencies :assets="dashboardData.currencies"/>

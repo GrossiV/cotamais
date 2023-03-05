@@ -15,7 +15,7 @@
   font-weight: normal;
 }
 
-body {
+body, #app {
   min-height: 100vh;
   color: var(--black);
   background: var(--base);

@@ -7,12 +7,25 @@ import {
   PointElement,
   LinearScale,
   CategoryScale,
-  Filler
+  Filler,
+  Title,
+  Legend,
+  Tooltip
 } from 'chart.js'
 // TODO add real data to chart
 // TODO make chart dynamic for each asset
 onMounted(() => {
-  Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Filler)
+  Chart.register(
+    LineController,
+    LineElement,
+    PointElement,
+    LinearScale,
+    CategoryScale,
+    Filler,
+    Title,
+    Legend,
+    Tooltip
+  )
   const ctx = document.getElementById('lineChart')
 
   const labels = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho']
@@ -32,7 +45,19 @@ onMounted(() => {
 
   new Chart(ctx, {
     type: 'line',
-    data: data
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart'
+        }
+      }
+    }
   })
 })
 </script>

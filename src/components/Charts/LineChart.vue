@@ -1,5 +1,10 @@
 <template>
-  <Line v-if="show" :options="chartOptions" :data="chartData" />
+  <div v-if="show">
+    <Line :options="chartOptions" :data="chartData" />
+    <p class="disclaimer">
+      * Dados ficticios, para ter acesso aos dados reais torne-se membro Cota+ Premium.
+    </p>
+  </div>
 </template>
 
 <script>
@@ -46,3 +51,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.disclaimer {
+  font-size: 12px;
+  color: rgb(221, 218, 218);
+}
+</style>

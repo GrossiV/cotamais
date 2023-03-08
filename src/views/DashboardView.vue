@@ -11,10 +11,6 @@ import StocksTable from '../components/Tables/StocksTable.vue'
 import LineChart from '../components/Charts/LineChart.vue'
 import { RESULTS } from '../utils/constants'
 
-//TODO MAKE CHART RESPONSIBLE
-// TODO ADD/HIDE TITLE AND PADDINGS TO CHART SECTION
-// TODO Create a function to clean char and compare coins
-
 const router = useRouter()
 
 const alertText = ref('')
@@ -54,33 +50,6 @@ const dashboardData = reactive({
 
 const datasets = reactive({})
 
-function cleanChart() {
-  chartConfig = {
-    show: false,
-    chartData: {
-      labels: [],
-      datasets: [
-        {
-          label: '',
-          data: [],
-          tension: 0,
-          borderColor: '',
-          backgroundColor: '',
-          fill: true
-        }
-      ]
-    },
-    chartOptions: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top'
-        }
-      }
-    }
-  }
-}
-
 function processChartData() {
   const date = Object.keys(RESULTS)
   const assets = Object.keys(RESULTS[date])
@@ -90,7 +59,6 @@ function processChartData() {
       data: Object.values(RESULTS[Object.keys(RESULTS)][asset])
     }
   }
-  console.log(datasets)
 }
 
 async function getDasboardData() {
@@ -108,10 +76,7 @@ async function getDasboardData() {
   }
 }
 
-function scrollToChart(currency) {
-  console.log(datasets)
-  console.log(currency)
-  console.log(datasets[currency], '?')
+function setChartData(currency) {
   chartConfig.show = true
   chartConfig.chartData = {
     labels: datasets[currency].labels,
@@ -126,6 +91,10 @@ function scrollToChart(currency) {
       }
     ]
   }
+}
+
+function scrollToChart(currency) {
+  setChartData(currency)
   chart.value.scrollIntoView({ behavior: 'smooth' })
 }
 
@@ -145,11 +114,13 @@ onMounted(() => {
     <div class="dashboard">
       <CurrenciesTable @focus-on-chart="scrollToChart" :assets="dashboardData.currencies" />
       <span ref="chart"></span>
-      <LineChart
-        :show="chartConfig.show"
-        :chartData="chartConfig.chartData"
-        :chartOptions="chartConfig.options"
-      />
+      <div class="dashboard__chart">
+        <LineChart
+          :show="chartConfig.show"
+          :chartData="chartConfig.chartData"
+          :chartOptions="chartConfig.options"
+        />
+      </div>
       <StocksTable :assets="dashboardData.stocks" />
     </div>
   </div>
@@ -157,5 +128,10 @@ onMounted(() => {
 <style scoped>
 .container {
   padding: 0 24px;
+}
+
+.dashboard__chart {
+  max-width: 980px;
+  margin: 0 auto 80px auto;
 }
 </style>

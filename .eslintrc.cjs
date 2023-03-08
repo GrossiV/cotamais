@@ -10,5 +10,9 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  // add your custom rules here
+  rules: {
+    'vue/no-reserved-component-names': 'off',
   }
 }

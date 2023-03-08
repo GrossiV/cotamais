@@ -1,5 +1,5 @@
 <script setup>
-import Chip from '../Chip.vue'
+import Chip from '../TextBadge.vue'
 import AssetCell from './Cells/AssetCell.vue'
 
 defineProps({

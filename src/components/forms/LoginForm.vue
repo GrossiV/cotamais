@@ -2,7 +2,7 @@
 import CustomInput from './inputs/CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import Alert from '../Alert.vue'
+import Alert from '../AlertRow.vue'
 
 const loginInput = ref('')
 const hasLoginError = ref(false)

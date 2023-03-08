@@ -20,7 +20,7 @@ const emit = defineEmits(['onInputChange', 'onInputFocus'])
 
 const input = ref('')
 
-function updateInput(e) {
+function updateInput() {
   emit('onInputChange', input.value)
 }
 function onFocus() {

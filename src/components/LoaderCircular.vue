@@ -18,7 +18,7 @@ defineProps({
   border-top: 8px solid var(--primary);
   width: 60px;
   height: 60px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
+  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   margin: auto;
   position: absolute;
@@ -28,7 +28,6 @@ defineProps({
   left: 0;
 }
 
-/* Safari */
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

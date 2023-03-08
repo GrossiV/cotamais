@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <h2 class="title">Índices de bolsas de valores pelo mundo</h2>
+  <h2 class="title">Índices de bolsas de valores pelo mundo hoje</h2>
   <div class="panel-container">
     <template :key="key" v-for="(stock, key) in assets">
       <div class="asset-tile" v-if="stock.variation">

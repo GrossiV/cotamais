@@ -1,4 +1,3 @@
-<!-- eslint-disable -->
 <template>
   <div v-if="show">
     <!-- eslint-disable -->

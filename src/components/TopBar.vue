@@ -17,7 +17,7 @@ function handleLogoutClick() {
   <nav class="topbar">
     <ul>
       <li @click="handleHomeClick" class="nav-item logo">Cota +</li>
-      <li @click="handleLogoutClick" class="nav-item">
+      <li @click="handleLogoutClick" class="nav-item logout">
         <IconLogout />
       </li>
     </ul>

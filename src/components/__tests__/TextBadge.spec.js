@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import Alert from '../AlertRow.vue'
+import TextBadge from '../TextBadge.vue'
 
-describe('Alert', () => {
+describe('TextBadge', () => {
   it('renders properly', () => {
-    const wrapper = mount(Alert, { props: { text: 'Hello Vitest', type: 'success' } })
+    const wrapper = mount(TextBadge, { props: { text: 'Hello Vitest', type: 'success' } })
     expect(wrapper.text()).toContain('Hello Vitest')
   })
 })

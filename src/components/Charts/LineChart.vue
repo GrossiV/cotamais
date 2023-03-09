@@ -1,8 +1,6 @@
 <template>
   <div v-if="show">
-    <!-- eslint-disable -->
     <Line :options="chartOptions" :data="chartData" />
-    <!-- eslint-enable -->
     <p class="disclaimer">
       * Dados ficticios, para ter acesso aos dados reais torne-se membro Cota+ Premium.
     </p>

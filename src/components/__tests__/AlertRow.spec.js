@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import Alert from '../AlertRow.vue'
+import AlertRow from '../AlertRow.vue'
 
-describe('Alert', () => {
+describe('AlertRow', () => {
   it('renders properly', () => {
-    const wrapper = mount(Alert, { props: { text: 'Hello Vitest', type: 'success' } })
+    const wrapper = mount(AlertRow, { props: { text: 'Hello Vitest', type: 'success' } })
     expect(wrapper.text()).toContain('Hello Vitest')
   })
 })

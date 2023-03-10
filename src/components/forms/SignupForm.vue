@@ -2,6 +2,7 @@
 import CustomInput from './inputs/CustomInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Alert from '../AlertRow.vue'
 
 const loginInput = ref('')
 const hasLoginError = ref(false)
@@ -11,6 +12,8 @@ const passwordInput = ref('')
 const confirmPasswordInput = ref('')
 const router = useRouter()
 const submitButton = ref(null)
+const alertText = ref('')
+const alertType = ref('')
 
 function updateLogin(input) {
   loginInput.value = input
@@ -32,6 +35,11 @@ function validateLoginInput() {
   return true
 }
 
+function hideAlert() {
+  alertText.value = ''
+  alertType.value = ''
+}
+
 function validatePasswordInput() {
   if (!passwordInput.value) {
     hasPasswordError.value = true
@@ -43,6 +51,10 @@ function validatePasswordInput() {
 function validateConfirmPasswordInput() {
   if (!confirmPasswordInput.value || confirmPasswordInput.value !== passwordInput.value) {
     hasConfirmPasswordError.value = true
+    if (loginInput.value && passwordInput.value) {
+      alertText.value = 'As senhas digitadas precisam ser iguais.'
+      alertType.value = 'danger'
+    }
     return false
   }
   return true
@@ -79,10 +91,12 @@ function handleSignupClick() {
 
 <template>
   <div class="container">
+    <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="signup-box">
       <h1 class="title">Cota +</h1>
       <form class="form" @submit.prevent="handleSignupClick">
         <CustomInput
+          id="login"
           @onInputChange="updateLogin"
           @onInputFocus="hasLoginError = false"
           :hasError="hasLoginError"
@@ -90,16 +104,20 @@ function handleSignupClick() {
           placeholder="usuário"
         />
         <CustomInput
+          id="password"
           @onInputChange="updatePassword"
           @onInputFocus="hasPasswordError = false"
+          @click="hideAlert"
           :hasError="hasPasswordError"
           class="form__input"
           type="password"
           placeholder="senha"
         />
         <CustomInput
+          id="confirmPassword"
           @onInputChange="updateConfirmPassword"
           @onInputFocus="hasConfirmPasswordError = false"
+          @click="hideAlert"
           :hasError="hasConfirmPasswordError"
           class="form__input"
           type="password"
@@ -126,6 +144,11 @@ function handleSignupClick() {
   justify-content: center;
   max-width: 400px;
   margin: 0 auto;
+}
+.alert {
+  position: absolute;
+  top: 24px;
+  width: 100%;
 }
 
 .title {
@@ -170,7 +193,6 @@ function handleSignupClick() {
   color: var(--primary);
   background-color: rgba(0, 0, 0, 0);
 }
-
 @media (min-width: 768px) {
   .signup-box {
     background-color: white;

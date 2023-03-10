@@ -1,28 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import CurrenciesTable from '../Tables/CurrenciesTable.vue'
-
-const MOCK_CURRENCIES = {
-  source: 'BRL',
-  USD: {
-    name: 'Dollar',
-    buy: '5.1652',
-    sell: '5.1652',
-    variation: '-0.064'
-  },
-  BTC: {
-    name: 'Bitcoin',
-    buy: '108754.997',
-    sell: '108754.997',
-    variation: '2.463'
-  },
-  ARS: {
-    name: 'Argentine Peso',
-    buy: '0.0258',
-    sell: null,
-    variation: '0.0'
-  }
-}
+import { MOCK_CURRENCIES } from '../../utils/mocks'
 
 describe('CurrenciesTable', () => {
   it('renders properly', () => {

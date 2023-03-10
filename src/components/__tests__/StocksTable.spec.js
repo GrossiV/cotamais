@@ -1,27 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import StocksTable from '../Tables/StocksTable.vue'
-
-const MOCK_STOCKS = {
-  IBOVESPA: {
-    name: 'BM&F BOVESPA',
-    location: 'Sao Paulo, Brazil',
-    points: 105071.19,
-    variation: '-1.38'
-  },
-  NIKKEI: {
-    name: 'Nikkei 225',
-    location: 'Tokyo, Japan',
-    points: 28623.15,
-    variation: '0.63'
-  },
-  NASDAQ: {
-    name: 'NASDAQ Stock Market',
-    location: 'New York City, United States',
-    points: 11338.35,
-    variation: '0.0'
-  }
-}
+import { MOCK_STOCKS } from '../../utils/mocks'
 
 describe('StocksTable', () => {
   it('renders properly', () => {

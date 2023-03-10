@@ -1,14 +1,6 @@
 # cotamais
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Project that fetchs data from HG Finance using vue 3 composition API.
 
 ## Project Setup
 
@@ -38,4 +30,10 @@ npm run test:unit
 
 ```sh
 npm run lint
+```
+
+### Coverage with [c8](https://vitest.dev/guide/coverage.html)
+
+```sh
+npm run coverage
 ```

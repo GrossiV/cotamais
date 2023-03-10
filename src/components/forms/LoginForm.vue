@@ -85,6 +85,7 @@ function handleSignupClick() {
       <h1 class="title">Cota +</h1>
       <form @submit.prevent="handleLoginClick" class="form">
         <CustomInput
+          id="login"
           @onInputChange="updateLogin"
           @onInputFocus="hasLoginError = false"
           :hasError="hasLoginError"
@@ -92,6 +93,7 @@ function handleSignupClick() {
           placeholder="usuário"
         />
         <CustomInput
+          id="password"
           @onInputChange="updatePassword"
           @onInputFocus="hasPasswordError = false"
           :hasError="hasPasswordError"

@@ -39,7 +39,7 @@ describe('DashboardView', () => {
       JSON.stringify({
         username: 'usuario',
         password: 'senha',
-        token: '1678316283385'
+        token: token
       })
     )
     const wrapper = mount(DashboardView)

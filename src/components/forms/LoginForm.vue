@@ -10,7 +10,6 @@ const passwordInput = ref('')
 const hasPasswordError = ref(false)
 const router = useRouter()
 const submitButton = ref(null)
-
 const alertText = ref('')
 const alertType = ref('')
 

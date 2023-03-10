@@ -39,9 +39,11 @@ function handleLogoutClick() {
   cursor: pointer;
 }
 .logo {
-  text-shadow: 1px 1px 20px var(--primary);
   font-weight: bold;
   font-size: 1.3rem;
+  border: 1px solid var(--primary);
+  padding: 0 8px;
+  border-radius: 5px;
 }
 ul {
   display: flex;

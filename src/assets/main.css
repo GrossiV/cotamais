@@ -25,6 +25,17 @@ body,
   font-size: 1rem;
 }
 
+.form-logo {
+  color: var(--primary);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  width: 120px;
+  margin: 0 auto;
+  font-weight: bold;
+  text-align: center;
+}
+
 button:hover {
   cursor: pointer;
   opacity: 0.8;

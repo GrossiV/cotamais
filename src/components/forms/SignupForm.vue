@@ -93,7 +93,7 @@ function handleSignupClick() {
   <div class="container">
     <Alert class="alert" :type="alertType" :text="alertText" />
     <div class="signup-box">
-      <h1 class="title">Cota +</h1>
+      <h1 class="form-logo">Cota +</h1>
       <form class="form" @submit.prevent="handleSignupClick">
         <CustomInput
           id="login"
